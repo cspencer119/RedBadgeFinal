@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arsenal.Models", "Arsenal.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arsenal.Service", "Arsenal.Service\Arsenal.Service.csproj", "{8423C2E6-BE6D-4407-B7DD-B150D46858FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arsenal.Contracts", "Arsenal.Contracts\Arsenal.Contracts.csproj", "{89DDDEFB-42A2-4F0A-B07A-23F3DA84FF08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arsenal.Tests", "Arsenal.Tests\Arsenal.Tests.csproj", "{282BFC0B-D067-450C-A212-621C346FEE68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{8423C2E6-BE6D-4407-B7DD-B150D46858FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8423C2E6-BE6D-4407-B7DD-B150D46858FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8423C2E6-BE6D-4407-B7DD-B150D46858FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89DDDEFB-42A2-4F0A-B07A-23F3DA84FF08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DDDEFB-42A2-4F0A-B07A-23F3DA84FF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DDDEFB-42A2-4F0A-B07A-23F3DA84FF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DDDEFB-42A2-4F0A-B07A-23F3DA84FF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282BFC0B-D067-450C-A212-621C346FEE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282BFC0B-D067-450C-A212-621C346FEE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282BFC0B-D067-450C-A212-621C346FEE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282BFC0B-D067-450C-A212-621C346FEE68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
