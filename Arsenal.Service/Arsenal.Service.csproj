@@ -63,5 +63,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arsenal.Data\Arsenal.Data.csproj">
+      <Project>{735CDBE1-3ED8-4CA7-A78F-FB49B358610F}</Project>
+      <Name>Arsenal.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Arsenal.Models\Arsenal.Models.csproj">
+      <Project>{89D4306C-84AC-4807-AF5C-62B7C39A8BEC}</Project>
+      <Name>Arsenal.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
