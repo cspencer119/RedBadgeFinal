@@ -18,6 +18,6 @@ namespace Arsenal.Models
         [Display(Name = "Team Stadium")]
         public string Stadium { get; set; }
         [Display(Name = "Stadium ID")]
-        public int StadiumID { get; set; }
+        public int StadiumId { get; set; }
     }
 }

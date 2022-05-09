@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Models
 {
-    internal class ResultsEdit
+    public class ResultsEdit
     {
+        public string HomeTeamName { get; set; }
+        public string AwayTeamName { get; set; }
+        public int HomeTeamScore { get; set; }
+        public int AwayTeamScore { get; set; }
+        public string WhoScored { get; set; }
+        public int FanAttendance { get; set; }
+        public string CompetitionName { get; set; }
     }
 }

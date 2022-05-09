@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Models
 {
-    internal class StadiumEdit
+    public class StadiumEdit
     {
+        public int StadiumId { get; set; }
+        public string StadiumName { get; set; }
+        public string StadiumDescription { get; set; }
+        public int StadiumCapacity { get; set; }
+        public string SatdiumLocation { get; set; }
     }
 }

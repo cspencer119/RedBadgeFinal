@@ -12,6 +12,6 @@ namespace Arsenal.Models
         public string TeamName { get; set; }
         public string CharacterDescription { get; set; }
         public string Stadium { get; set; }
-        public int StadiumID { get; set; }
+        public int StadiumId { get; set; }
     }
 }
