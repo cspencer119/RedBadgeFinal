@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Arsenal.Models;
+using Arsenal.Service;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +12,36 @@ namespace RedBadgeFinal.Controllers
     public class TeamController : Controller
     {
         // GET: Team
-        public ActionResult Index()
+        private TeamService CreateTeamServiceUserId()
         {
-            return View();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var cService = new TeamService(userId);
+            return cService;
         }
+
+        private TeamService CreateTeamService()
+        {
+            var cService = new TeamService();
+            return cService;
+        }
+
+        public IHttpActionResult Get()
+        {
+            var cService = CreateTeamService();
+            var team = cService.GetTeam();
+            return Ok(team);
+        }
+
+        [Authorize]
+        public IHttpActionResult Post(TeamCreate team)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var cService = CreateTeamServiceUserId();
+            if (!cService.CreateTeam(team))
+                return InternalServerError();
+            return Ok($"Team {team.TeamName} has been created!");
+        }
+
     }
 }

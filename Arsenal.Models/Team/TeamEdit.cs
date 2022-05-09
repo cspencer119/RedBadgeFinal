@@ -8,9 +8,9 @@ namespace Arsenal.Models
 {
     public class TeamEdit
     {
-        public int TeamID { get; set; }
+        public int TeamId { get; set; }
         public string TeamName { get; set; }
-        public string CharacterDescription { get; set; }
+        public string TeamDescription { get; set; }
         public string Stadium { get; set; }
         public int StadiumId { get; set; }
     }

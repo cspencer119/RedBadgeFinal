@@ -64,6 +64,7 @@
     <Compile Include="Team\TeamCreate.cs" />
     <Compile Include="Team\TeamDetail.cs" />
     <Compile Include="Team\TeamEdit.cs" />
+    <Compile Include="Team\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
