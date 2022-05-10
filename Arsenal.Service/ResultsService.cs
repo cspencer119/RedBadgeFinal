@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Arsenal.Service
 {
-    internal class ResultsService
+    public class ResultsService
     {
+
     }
 }

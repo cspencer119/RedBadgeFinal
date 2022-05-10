@@ -43,5 +43,33 @@ namespace RedBadgeFinal.Controllers
             return Ok($"Team {team.TeamName} has been created!");
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            var cService = CreateTeamService();
+            var team = cService.GetTeamById(id);
+            if (team == null)
+                return BadRequest("That team ID doen't exist.");
+            return Ok(team);
+        }
+
+        public IHttpActionResult Put(TeadEdit team)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var cService = CreateTeamService();
+            if (!cService.UpdateTeam(team))
+                return BadRequest("The Team ID you provided does not exist");
+            return Ok($"You have edited team {team.TeadId}.")
+        }
+
+        [Authorize]
+        public IHttpActionResult Delete(int id)
+        {
+            var cService = CreateTeamServiceUserId();
+            if (!cService.DeleteTeam(id))
+                return BadRequest("Something went wrong and no team was deleted. Please check the information and try again.");
+                    return Ok("You have delete the team.");
+        }
+
     }
 }

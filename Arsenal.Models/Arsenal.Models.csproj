@@ -61,6 +61,7 @@
     <Compile Include="Stadium\StadiumCreate.cs" />
     <Compile Include="Stadium\StadiumDetail.cs" />
     <Compile Include="Stadium\StadiumEdit.cs" />
+    <Compile Include="Stadium\StadiumListItem.cs" />
     <Compile Include="Team\TeamCreate.cs" />
     <Compile Include="Team\TeamDetail.cs" />
     <Compile Include="Team\TeamEdit.cs" />
