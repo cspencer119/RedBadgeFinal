@@ -12,6 +12,8 @@ namespace Arsenal.Data
         [Key]
         public int TeamId { get; set; }
         [Required]
+        public Guid UserId { get; set; }
+        [Required]
         public string TeamName { get; set; }
         [Required]
         public string TeamDescription { get; set; }

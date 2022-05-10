@@ -19,5 +19,7 @@ namespace Arsenal.Data
         public int StadiumCapacity { get; set; }
         [Required]
         public string StadiumLocation { get; set; }
+        [Required]
+        public Guid UserId { get; set; }
     }
 }

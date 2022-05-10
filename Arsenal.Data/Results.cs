@@ -10,7 +10,8 @@ namespace Arsenal.Data
     public class Results
     {
         [Key]
-        public int TeamId { get; set; }
+        public int ResultId { get; set; }
+        
         [Required]
         public string HomeTeamName { get; set; }
         [Required]
@@ -22,5 +23,8 @@ namespace Arsenal.Data
         public string WhoScored { get; set; }
         public int FanAttendance { get; set; }
         public string CompetitionName { get; set; }
+
+        [Required]
+        public Guid UserId { get; set; }
     }
 }

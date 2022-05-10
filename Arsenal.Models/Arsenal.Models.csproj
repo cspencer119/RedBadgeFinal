@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\ResultListItem.cs" />
     <Compile Include="Results\ResultsCreate.cs" />
     <Compile Include="Results\ResultsDetail.cs" />
     <Compile Include="Results\ResultsEdit.cs" />
@@ -70,6 +71,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arsenal.Data\Arsenal.Data.csproj">
+      <Project>{735CDBE1-3ED8-4CA7-A78F-FB49B358610F}</Project>
+      <Name>Arsenal.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

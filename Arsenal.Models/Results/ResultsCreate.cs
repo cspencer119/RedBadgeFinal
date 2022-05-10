@@ -10,6 +10,8 @@ namespace Arsenal.Models
     public class ResultsCreate
     {
         [Required]
+        public int ResultId { get; set; }
+        [Required]
         public string HomeTeamName { get; set; }
         [Required]
         public string AwayTeamName { get; set; }
@@ -18,7 +20,7 @@ namespace Arsenal.Models
         [Required]
         public int AwayTeamScore { get; set; }
         public string WhoScored { get; set; }
-        public string FansAttendance { get; set; }
+        public int FanAttendance { get; set; }
         [Required]
         public string CompetitionName { get; set; }
     }

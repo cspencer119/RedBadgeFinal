@@ -8,6 +8,7 @@ namespace Arsenal.Models
 {
     public class ResultsEdit
     {
+        public int ResultId { get; set; }
         public string HomeTeamName { get; set; }
         public string AwayTeamName { get; set; }
         public int HomeTeamScore { get; set; }
