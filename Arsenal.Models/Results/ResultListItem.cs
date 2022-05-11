@@ -27,6 +27,6 @@ namespace Arsenal.Models.Results
         [Display(Name = "Competition Name")]
         public string CompetitionName { get; set; }
 
-        public override string ToString() => ResultId;
+        public override int ToInt() => ResultId;
     }
 }

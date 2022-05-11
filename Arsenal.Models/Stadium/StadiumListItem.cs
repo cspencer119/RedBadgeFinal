@@ -17,6 +17,6 @@ namespace Arsenal.Models.Stadium
         public int StadiumCapacity { get; set; }
         [Display(Name = "Stadium Location")]
         public string StadiumLocation { get; set; }
-        public override string ToString() => StadiumName;
+        public override string ToInt() => StadiumName;
     }
 }
