@@ -13,7 +13,7 @@ namespace Arsenal.Models.Team
         public int TeamId { get; set; }
         [Display(Name = "Team Name")]
         public string TeamName { get; set; }
-        public override string ToInt() => TeamName;
+        public override string ToString() => TeamName;
 
     }
 }

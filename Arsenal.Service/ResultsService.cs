@@ -121,7 +121,7 @@ namespace Arsenal.Service
                 var userResults = ctx.Results.Where(e => e.UserId == _userId).ToArray();
                 foreach (var c in userResults)
                 {
-                    if (c.ResultsId == resultId)
+                    if (c.ResultId == resultId)
                     {
                         var entity =
                             ctx
