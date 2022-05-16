@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,7 +28,7 @@ namespace RedBadgeFinal.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(teams);
+            return View(stadium);
         }
 
         public ActionResult Delete(int? id)
@@ -36,20 +37,20 @@ namespace RedBadgeFinal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teams team = _db.Teams.Find(id);
-            if (team == null)
+            Stadium stadium = _db.Stadium.Find(id);
+            if (stadium == null)
             {
                 return HttpNotFound();
             }
-            return View(team);
+            return View(stadium);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Teams team = _db.Teams.Find(id);
-            _db.Teams.Remove(team);
+            Stadium stadium = _db.Stadium.Find(id);
+            _db.Stadium.Remove(stadium);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -60,12 +61,12 @@ namespace RedBadgeFinal.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Teams team = _db.Teams.Find(id);
-            if (team == null)
+            Stadium stadium = _db.Stadium.Find(id);
+            if (stadium == null)
             {
                 return HttpNotFound();
             }
-            return View(team);
+            return View(stadium);
         }
 
         [HttpPost]
