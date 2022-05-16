@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,10 @@ namespace Arsenal.Data
         public string Stadium { get; set; }
         [Required]
         public int StadiumId { get; set; }
+    }
+
+    public class TeamDbContext : DbContext
+    {
+        public DbSet<Teams> Teams { get; set; }
     }
 }

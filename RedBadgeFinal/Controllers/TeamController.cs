@@ -1,9 +1,11 @@
-﻿using Arsenal.Models;
+﻿using Arsenal.Data;
+using Arsenal.Models;
 using Arsenal.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,64 +14,80 @@ namespace RedBadgeFinal.Controllers
     public class TeamController : Controller
     {
         // GET: Team
-        private TeamService CreateTeamServiceUserId()
+        private TeamDbContext _db = new TeamDbContext();
+        public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var cService = new TeamService(userId);
-            return cService;
+            return View(_db.Teams.ToList());
+        }
+       
+        public ActionResult Create()
+        {
+            return View();
         }
 
-        private TeamService CreateTeamService()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Teams teams)
         {
-            var cService = new TeamService();
-            return cService;
+            if (ModelState.IsValid)
+            {
+                _db.Teams.Add(teams);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(teams);
         }
 
-        public IHttpActionResult Get()
+        public ActionResult Delete(int? id)
         {
-            var cService = CreateTeamService();
-            var team = cService.GetTeam();
-            return Ok(team);
-        }
-
-        [Authorize]
-        public IHttpActionResult Post(TeamCreate team)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            var cService = CreateTeamServiceUserId();
-            if (!cService.CreateTeam(team))
-                return InternalServerError();
-            return Ok($"Team {team.TeamName} has been created!");
-        }
-
-        public IHttpActionResult Get(int id)
-        {
-            var cService = CreateTeamService();
-            var team = cService.GetTeamById(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Teams team = _db.Teams.Find(id);
             if (team == null)
-                return BadRequest("That team ID doen't exist.");
-            return Ok(team);
+            {
+                return HttpNotFound();
+            }
+            return View(team);
         }
 
-        public IHttpActionResult Put(TeadEdit team)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            var cService = CreateTeamService();
-            if (!cService.UpdateTeam(team))
-                return BadRequest("The Team ID you provided does not exist");
-            return Ok($"You have edited team {team.TeadId}.")
+            Teams team = _db.Teams.Find(id);
+            _db.Teams.Remove(team);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        [Authorize]
-        public IHttpActionResult Delete(int id)
+        public ActionResult Edit(int? id)
         {
-            var cService = CreateTeamServiceUserId();
-            if (!cService.DeleteTeam(id))
-                return BadRequest("Something went wrong and no team was deleted. Please check the information and try again.");
-                    return Ok("You have delete the team.");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Teams team = _db.Teams.Find(id);
+            if (team == null)
+            {
+                return HttpNotFound();
+            }
+            return View(team);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Teams team)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(team).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(team);
+        }
     }
 }
