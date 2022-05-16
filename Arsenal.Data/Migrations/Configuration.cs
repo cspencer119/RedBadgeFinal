@@ -11,7 +11,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-
+            ContextKey = "Arsenal.Data.ApplicationDbContext";
         }
 
         protected override void Seed(Arsenal.Data.ApplicationDbContext context)
@@ -158,7 +158,7 @@
                 TeamName = "Southampton",
                 TeamDescription = "Description of Southampton",
                 Stadium = "St Mary's Stadium",
-                StadiumId = 8
+                StadiumId = 18
             },
             new Teams()
             {
