@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Arsenal.Models.Results.ResultListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwayTeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTeamScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwayTeamScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhoScored)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FanAttendance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompetitionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwayTeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTeamScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwayTeamScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhoScored)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FanAttendance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompetitionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

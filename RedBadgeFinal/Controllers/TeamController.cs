@@ -1,5 +1,6 @@
 ﻿using Arsenal.Data;
 using Arsenal.Models;
+using Arsenal.Models.Team;
 using Arsenal.Service;
 using Microsoft.AspNet.Identity;
 using System;
@@ -17,7 +18,8 @@ namespace RedBadgeFinal.Controllers
         private TeamDbContext _db = new TeamDbContext();
         public ActionResult Index()
         {
-            return View(_db.Teams.ToList());
+            var model = new TeamListItem[20];
+            return View(model);
         }
        
         public ActionResult Create()

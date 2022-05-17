@@ -1,4 +1,5 @@
 ﻿using Arsenal.Data;
+using Arsenal.Models.Stadium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace RedBadgeFinal.Controllers
         private StadiumDbContext _db = new StadiumDbContext();
         public ActionResult Index()
         {
-            return View();
+            var model = new StadiumListItem[20];
+            return View(model);
         }
 
         [HttpPost]
