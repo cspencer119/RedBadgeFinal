@@ -1,5 +1,7 @@
 ﻿using Arsenal.Data;
 using Arsenal.Models.Stadium;
+using Arsenal.Service;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +17,16 @@ namespace RedBadgeFinal.Controllers
         private StadiumDbContext _db = new StadiumDbContext();
         public ActionResult Index()
         {
-            var model = new StadiumListItem[20];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new StadiumService(userId);
+            var model = service.GetStadium();
+            //var model = new StadiumListItem[20];
             return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -73,7 +83,7 @@ namespace RedBadgeFinal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Teams team)
+        public ActionResult Edit(Stadium team)
         {
             if (ModelState.IsValid)
             {

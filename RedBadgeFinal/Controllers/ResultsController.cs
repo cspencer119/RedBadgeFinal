@@ -1,5 +1,7 @@
 ﻿using Arsenal.Data;
 using Arsenal.Models.Results;
+using Arsenal.Service;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,10 @@ namespace RedBadgeFinal.Controllers
         private ResultsDbContext _db = new ResultsDbContext();
         public ActionResult Index()
         {
-            var model = new ResultListItem[38];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ResultsService(userId);
+            var model = service.GetResults();
+            //var model = new ResultListItem[38];
             return View(model);
         }
 

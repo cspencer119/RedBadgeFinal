@@ -9,6 +9,8 @@ namespace Arsenal.Models
 {
     public class StadiumCreate
     {
+        [Required]
+        public int StadiumId { get; set; }
         [MaxLength(60, ErrorMessage = "There are too many characters in this field. (Max 60)")]
         [Required]
         public string StadiumName { get; set; }

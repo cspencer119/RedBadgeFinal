@@ -22,6 +22,7 @@ namespace Arsenal.Service
             var entity =
                 new Stadium()
                 {
+                    StadiumId = model.StadiumId,
                     StadiumName = model.StadiumName,
                     StadiumDescription = model.StadiumDescription,
                     StadiumCapacity = model.StadiumCapacity,
@@ -44,7 +45,9 @@ namespace Arsenal.Service
                     .Select(e => new StadiumListItem()
                     {
                         StadiumId = e.StadiumId,
-                        StadiumName = e.StadiumName
+                        StadiumName = e.StadiumName,
+                        StadiumCapacity = e.StadiumCapacity,
+                        StadiumLocation = e.StadiumLocation
                     });
                 return query.ToArray();
             }

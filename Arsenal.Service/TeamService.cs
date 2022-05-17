@@ -22,6 +22,7 @@ namespace Arsenal.Service
             var entity =
                 new Teams()
                 {
+                    TeamId = model.TeamId,
                     TeamName = model.TeamName,
                     TeamDescription = model.TeamDescription,
                     Stadium = model.Stadium,

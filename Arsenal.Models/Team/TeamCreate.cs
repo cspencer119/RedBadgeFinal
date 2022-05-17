@@ -9,6 +9,8 @@ namespace Arsenal.Models
 {
     public class TeamCreate
     {
+        [Required]
+        public int TeamId { get; set; }
         [MaxLength(40, ErrorMessage = "There are too many characters in this field. (Max 40")]
         [Required]
         public string TeamName { get; set; }

@@ -18,7 +18,11 @@ namespace RedBadgeFinal.Controllers
         private TeamDbContext _db = new TeamDbContext();
         public ActionResult Index()
         {
-            var model = new TeamListItem[20];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamService(userId);
+            var model = service.GetTeam();
+            //var model = new TeamListItem[20];
+
             return View(model);
         }
        

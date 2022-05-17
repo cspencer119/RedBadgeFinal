@@ -184,7 +184,7 @@
                 StadiumName = "Highbury",
                 StadiumLocation = "London",
                 StadiumDescription = "Descriptin of Highbury",
-                StadiumCapacity = 67000
+                StadiumCapacity = 38419
             },
             new Stadium()
             {
