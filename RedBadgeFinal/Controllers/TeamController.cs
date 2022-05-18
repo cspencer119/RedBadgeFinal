@@ -67,29 +67,6 @@ namespace RedBadgeFinal.Controllers
             return service;
         }
 
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Teams team = _db.Teams.Find(id);
-            if (team == null)
-            {
-                return HttpNotFound();
-            }
-            return View(team);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            Teams team = _db.Teams.Find(id);
-            _db.Teams.Remove(team);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         public ActionResult Edit(int id)
         {
@@ -129,6 +106,29 @@ namespace RedBadgeFinal.Controllers
 
             ModelState.AddModelError("", "Your team could not be updated.");
             return View(team);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateTeamService();
+            var model = svc.GetTeamById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateTeamService();
+
+            service.DeleteTeam(id);
+
+            TempData["SaveResult"] = "Your team was deleted.";
+
+            return RedirectToAction("Index");
         }
     }
 }

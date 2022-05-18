@@ -60,30 +60,6 @@ namespace RedBadgeFinal.Controllers
             return service;
         }
 
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Stadium stadium = _db.Stadium.Find(id);
-            if (stadium == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stadium);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            Stadium stadium = _db.Stadium.Find(id);
-            _db.Stadium.Remove(stadium);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         public ActionResult Edit(int id)
         {
             var service = CreateStadiumService();
@@ -122,6 +98,30 @@ namespace RedBadgeFinal.Controllers
 
             ModelState.AddModelError("", "The stadium could not be updated.");
             return View(stadium);
+        }
+
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateStadiumService();
+            var model = svc.GetStadiumById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateStadiumService();
+
+            service.DeleteStadium(id);
+
+            TempData["SaveResult"] = "Your stadium was deleted.";
+
+            return RedirectToAction("Index");
         }
     }
 }

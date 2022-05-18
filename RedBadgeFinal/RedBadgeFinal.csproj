@@ -251,6 +251,7 @@
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Stadium\Details.cshtml" />
     <Content Include="Views\Results\Details.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -93,13 +93,8 @@ namespace Arsenal.Service
 
         public bool DeleteStadium(int stadiumId)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())     
             {
-                var userStadium = ctx.Stadium.Where(e => e.UserId == _userId).ToArray();
-                foreach (var c in userStadium)
-                {
-                    if (c.StadiumId == stadiumId)
-                    {
                         var entity =
                             ctx
                             .Teams
@@ -107,9 +102,8 @@ namespace Arsenal.Service
 
                         ctx.Teams.Remove(entity);
                         return ctx.SaveChanges() == 1;
-                    }
-                }
-                return false;
+                    
+                
             }
         }
     }

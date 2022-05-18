@@ -57,29 +57,6 @@ namespace RedBadgeFinal.Controllers
             return service;
         }
 
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Results result = _db.Results.Find(id);
-            if (result == null)
-            {
-                return HttpNotFound();
-            }
-            return View(result);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            Results result = _db.Results.Find(id);
-            _db.Results.Remove(result);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         public ActionResult Edit(int id)
         {
@@ -122,6 +99,30 @@ namespace RedBadgeFinal.Controllers
 
             ModelState.AddModelError("", "The result could not be updated.");
             return View(results);
+        }
+
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateResultsService();
+            var model = svc.GetResultsById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateResultsService();
+
+            service.DeleteResult(id);
+
+            TempData["SaveResult"] = "Your result was deleted.";
+
+            return RedirectToAction("Index");
         }
     }
 }

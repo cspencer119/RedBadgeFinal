@@ -111,11 +111,6 @@ namespace Arsenal.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var userResults = ctx.Results.Where(e => e.UserId == _userId).ToArray();
-                foreach (var c in userResults)
-                {
-                    if (c.ResultId == resultId)
-                    {
                         var entity =
                             ctx
                             .Results
@@ -123,9 +118,7 @@ namespace Arsenal.Service
 
                         ctx.Results.Remove(entity);
                         return ctx.SaveChanges() == 1;
-                    }
-                }
-                return false;
+                 
             }
         }
     }
