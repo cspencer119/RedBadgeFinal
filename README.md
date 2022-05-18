@@ -49,6 +49,8 @@ Delete - to Delete an existing Team, Stadium or Result (Please do not delete nee
 
 link to my dbdiagram - https://dbdiagram.io/d/626aa48195e7f23c619036fe
 
+link to the published site on Azure - https://arsenaldatabaseresult.azurewebsites.net
+
 Author
 Cyrus Spencer
 
