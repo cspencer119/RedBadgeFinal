@@ -246,12 +246,12 @@
     <Content Include="Views\Stadium\Edit.cshtml" />
     <Content Include="Views\Stadium\Create.cshtml" />
     <Content Include="Views\Results\Create.cshtml" />
-    <Content Include="Views\Results\Edit.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Stadium\Details.cshtml" />
     <Content Include="Views\Results\Details.cshtml" />
     <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Results\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
