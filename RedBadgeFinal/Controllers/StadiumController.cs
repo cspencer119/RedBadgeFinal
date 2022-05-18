@@ -1,4 +1,5 @@
 ﻿using Arsenal.Data;
+using Arsenal.Models;
 using Arsenal.Models.Stadium;
 using Arsenal.Service;
 using Microsoft.AspNet.Identity;
@@ -83,31 +84,44 @@ namespace RedBadgeFinal.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Stadium stadium = _db.Stadium.Find(id);
-            if (stadium == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stadium);
+            var service = CreateStadiumService();
+            var detail = service.GetStadiumById(id);
+            var model =
+                new StadiumEdit
+                {
+                    StadiumId = detail.StadiumId,
+                    StadiumName = detail.StadiumName,
+                    StadiumLocation = detail.StadiumLocation,
+                    StadiumDescription = detail.StadiumDescription,
+                    StadiumCapacity = detail.StadiumCapacity
+                };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Stadium team)
+        public ActionResult Edit(int id, StadiumEdit stadium)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(stadium);
+
+            if (stadium.StadiumId != id)
             {
-                _db.Entry(team).State = System.Data.Entity.EntityState.Modified;
-                _db.SaveChanges();
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(stadium);
+            }
+
+            var service = CreateStadiumService();
+
+            if (service.UpdateStadium(stadium))
+            {
+                TempData["SaveResult"] = "Your stadium was updated.";
                 return RedirectToAction("Index");
             }
-            return View(team);
+
+            ModelState.AddModelError("", "The stadium could not be updated.");
+            return View(stadium);
         }
     }
 }

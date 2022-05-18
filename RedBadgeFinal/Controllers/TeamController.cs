@@ -91,30 +91,43 @@ namespace RedBadgeFinal.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Teams team = _db.Teams.Find(id);
-            if (team == null)
-            {
-                return HttpNotFound();
-            }
-            return View(team);
+            var service = CreateTeamService();
+            var detail = service.GetTeamById(id);
+            var model =
+                new TeamEdit
+                {
+                    TeamId = detail.TeamId,
+                    TeamName = detail.TeamName,
+                    TeamDescription = detail.TeamDescription,
+                    Stadium = detail.Stadium,
+                    StadiumId = detail.StadiumId
+                };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Teams team)
+        public ActionResult Edit(int id, TeamEdit team)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(team);
+
+            if (team.TeamId != id)
             {
-                _db.Entry(team).State = System.Data.Entity.EntityState.Modified;
-                _db.SaveChanges();
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(team);
+            }
+
+            var service = CreateTeamService();
+
+            if (service.UpdateTeam(team))
+            {
+                TempData["SaveResult"] = "Your team was updated.";
                 return RedirectToAction("Index");
             }
+
+            ModelState.AddModelError("", "Your team could not be updated.");
             return View(team);
         }
     }

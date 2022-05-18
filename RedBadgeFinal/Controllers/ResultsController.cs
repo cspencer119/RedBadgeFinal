@@ -1,4 +1,5 @@
 ﻿using Arsenal.Data;
+using Arsenal.Models;
 using Arsenal.Models.Results;
 using Arsenal.Service;
 using Microsoft.AspNet.Identity;
@@ -80,31 +81,47 @@ namespace RedBadgeFinal.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Results results = _db.Results.Find(id);
-            if (results == null)
-            {
-                return HttpNotFound();
-            }
-            return View(results);
+            var service = CreateResultsService();
+            var detail = service.GetResultsById(id);
+            var model =
+                new ResultsEdit
+                {
+                    ResultId = detail.ResultId,
+                    HomeTeamName = detail.HomeTeamName,
+                    HomeTeamScore = detail.HomeTeamScore,
+                    AwayTeamName = detail.AwayTeamName,
+                    AwayTeamScore = detail.AwayTeamScore,
+                    WhoScored = detail.WhoScored,
+                    FanAttendance = detail.FanAttendance,
+                    CompetitionName = detail.CompetitionName
+                };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Teams team)
+        public ActionResult Edit(int id, ResultsEdit results)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(results);
+
+            if (results.ResultId != id)
             {
-                _db.Entry(team).State = System.Data.Entity.EntityState.Modified;
-                _db.SaveChanges();
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(results);
+            }
+
+            var service = CreateResultsService();
+
+            if (service.UpdateResult(results))
+            {
+                TempData["SaveResult"] = "Your stadium was updated.";
                 return RedirectToAction("Index");
             }
-            return View(team);
+
+            ModelState.AddModelError("", "The result could not be updated.");
+            return View(results);
         }
     }
 }

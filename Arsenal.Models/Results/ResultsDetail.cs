@@ -10,7 +10,7 @@ namespace Arsenal.Models
     public class ResultsDetail
     {
         [Display(Name = "Result Id")]
-        public string ResultId { get; set; }
+        public int ResultId { get; set; }
         [Display(Name = "Home Team")]
         public string HomeTeamName { get; set; }
         [Display(Name = "Away Team")]

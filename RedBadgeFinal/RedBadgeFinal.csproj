@@ -250,6 +250,7 @@
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Stadium\Details.cshtml" />
+    <Content Include="Views\Results\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

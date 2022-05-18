@@ -1,0 +1,82 @@
+﻿@model Arsenal.Models.ResultsDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ResultsDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResultId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResultId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeTeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeTeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwayTeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwayTeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeTeamScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeTeamScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AwayTeamScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AwayTeamScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WhoScored)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WhoScored)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FanAttendance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FanAttendance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompetitionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompetitionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResultId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

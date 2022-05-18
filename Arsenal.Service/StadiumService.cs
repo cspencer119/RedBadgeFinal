@@ -81,22 +81,13 @@ namespace Arsenal.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var all = ctx.Stadium.ToArray();
-                foreach (var c in all)
-                {
-                    if (c.StadiumId == model.StadiumId)
-                    {
                         var entity =
                             ctx
                             .Stadium.Single(e => e.StadiumId == model.StadiumId);
                         entity.StadiumName = model.StadiumName;
                         entity.StadiumDescription = model.StadiumDescription;
                         entity.StadiumCapacity = model.StadiumCapacity;
-                        return ctx.SaveChanges() >= 1;
-
-                    }
-                }
-                return false;
+                        return ctx.SaveChanges() == 1;
             }
         }
 

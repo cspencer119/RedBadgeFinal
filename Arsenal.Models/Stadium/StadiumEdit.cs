@@ -12,6 +12,6 @@ namespace Arsenal.Models
         public string StadiumName { get; set; }
         public string StadiumDescription { get; set; }
         public int StadiumCapacity { get; set; }
-        public string SatdiumLocation { get; set; }
+        public string StadiumLocation { get; set; }
     }
 }

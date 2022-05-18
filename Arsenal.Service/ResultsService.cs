@@ -92,11 +92,6 @@ namespace Arsenal.Service
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var all = ctx.Results.ToArray();
-                foreach (var c in all)
-                {
-                    if (c.ResultId == model.ResultId)
-                    {
                         var entity =
                             ctx
                             .Results.Single(e => e.ResultId == model.ResultId);
@@ -107,10 +102,8 @@ namespace Arsenal.Service
                         entity.WhoScored = model.WhoScored;
                         entity.FanAttendance = model.FanAttendance;
                         entity.CompetitionName = model.CompetitionName;
-                        return ctx.SaveChanges() >= 1;
-                    }
-                }
-                return false;
+                        return ctx.SaveChanges() == 1;
+              
             }
         }
 
