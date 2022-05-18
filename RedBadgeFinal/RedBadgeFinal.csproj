@@ -183,10 +183,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\arsenal-crest.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\photo-1563580853176-38535245e8b6.jpg" />
+    <Content Include="Content\soccer-field.jpg" />
+    <Content Include="Content\WhatsApp Image 2020-03-12 at 22.13.49.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -241,7 +245,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Stadium\Index.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
-    <Content Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\Stadium\Edit.cshtml" />
     <Content Include="Views\Stadium\Create.cshtml" />
@@ -252,6 +255,7 @@
     <Content Include="Views\Results\Details.cshtml" />
     <Content Include="Views\Team\Delete.cshtml" />
     <Content Include="Views\Results\Edit.cshtml" />
+    <Content Include="Views\Team\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

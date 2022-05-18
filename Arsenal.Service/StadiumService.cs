@@ -69,7 +69,8 @@ namespace Arsenal.Service
                                 StadiumId = entity.StadiumId,
                                 StadiumName = entity.StadiumName,
                                 StadiumDescription = entity.StadiumDescription,
-                                StadiumCapacity = entity.StadiumCapacity
+                                StadiumCapacity = entity.StadiumCapacity,
+                                StadiumLocation = entity.StadiumLocation
                             };
                     }
                 }

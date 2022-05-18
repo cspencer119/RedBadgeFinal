@@ -1,8 +1,78 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image:url(soccer-field.jpg)
+}
+
+.arsenal{
+    position:absolute;
+    padding-top: 175px;
+    z-index: 0;
+    padding-left: 540px;
+}
+
+.jumbotron
+{
+    background-image:url(photo-1563580853176-38535245e8b6.jpg);
+    border-image-width: auto;
+    text-align: left;
+    font-size: 22px;
+    border-style: ridge;
+    border-color: black;
+    border-width: 5px;
+    color: red;
+}
+
+.row {
+    background-color: lightcyan;
+    font-size: 15px;
+    border-style: ridge;
+    border-color: black;
+    border-width: 5px;
+}
+
+p {
+    border: solid, 
+    font-size: 14px;
+
+}
+
+h2 {
+    text-align: center;
+    color: red;
+}
+
+h4 {
+    text-align: left;
+    font-size: 14px;
+}
+
+
+.table 
+{
+    background-color: ghostwhite;
+    font-size: 15px;
+    border-style: double;
+    border-color: red;
+
+}
+
+.form-horizontal 
+{
+    background-color: cornsilk;
+    border-style: double;
+    border-color: red;
+}
+
+.dl-horizontal
+{
+    background-color: whitesmoke;
+    border-style: double;
+    border-color: red;
+    margin-right: 580px;
     
 }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
