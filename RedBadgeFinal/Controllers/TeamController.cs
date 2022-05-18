@@ -25,7 +25,7 @@ namespace RedBadgeFinal.Controllers
 
             return View(model);
         }
-       
+
         public ActionResult Create()
         {
             return View();
@@ -37,12 +37,34 @@ namespace RedBadgeFinal.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Teams.Add(teams);
-                _db.SaveChanges();
+                return View(teams);
+            }
+            var service = CreateTeamService();
+
+            if (service.TeamCreate(teams))
+            {
+                TempData["SaveResult"] = "The team was created";
                 return RedirectToAction("Index");
             }
 
+            ModelState.AddModelError("", "Note could not be created");
+
             return View(teams);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateTeamService();
+            var model = svc.GetTeamById(id);
+
+            return View(model);
+        }
+
+        private TeamService CreateTeamService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new TeamService(userId);
+            return service;
         }
 
         public ActionResult Delete(int? id)

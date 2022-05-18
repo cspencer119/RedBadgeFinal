@@ -51,28 +51,22 @@ namespace Arsenal.Service
             }
         }
 
+
         public TeamDetail GetTeamById(int teamId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var chars = ctx.Teams.Where(e => e.TeamId == teamId).ToArray();
-                foreach (var c in chars)
-                {
-                    if (c.TeamId == teamId)
+    
+                 var entity = ctx.Teams.Single(e => e.TeamId == teamId);
+                return
+                    new TeamDetail
                     {
-                        var entity = ctx.Teams.Single(e => e.TeamId == teamId);
-                        return
-                            new TeamDetail
-                            {
-                                TeamId = entity.TeamId,
-                                TeamName = entity.TeamName,
-                                TeamDescription = entity.TeamDescription,
-                                Stadium = entity.Stadium,
-                                StadiumId = entity.StadiumId
-                            };
-                    }
-                }
-                return null;
+                        TeamId = entity.TeamId,
+                        TeamName = entity.TeamName,
+                        TeamDescription = entity.TeamDescription,
+                        Stadium = entity.Stadium,
+                        StadiumId = entity.StadiumId
+                    };
             }
         }
 
