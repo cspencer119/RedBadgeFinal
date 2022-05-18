@@ -28,14 +28,32 @@ namespace RedBadgeFinal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Results result)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _db.Results.Add(result);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+               return View(result); 
             }
 
+            var service = CreateResultsService();
+
+            ModelState.AddModelError("", "Result could not be created.");
+
             return View(result);
+            
+        }
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateResultsService();
+            var model = svc.GetResultsById(id);
+
+            return View(model);
+        }
+
+        private ResultsService CreateResultsService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ResultsService(userId);
+            return service;
         }
 
         public ActionResult Delete(int? id)

@@ -33,14 +33,30 @@ namespace RedBadgeFinal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Stadium stadium)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _db.Stadium.Add(stadium);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(stadium);
             }
+            var service = CreateStadiumService();
+
+            ModelState.AddModelError("", "Stadium could not be created.");
 
             return View(stadium);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var svc = CreateStadiumService();
+            var model = svc.GetStadiumById(id);
+
+            return View(model);
+        }
+
+        private StadiumService CreateStadiumService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new StadiumService(userId);
+            return service;
         }
 
         public ActionResult Delete(int? id)

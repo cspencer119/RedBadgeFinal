@@ -35,19 +35,19 @@ namespace RedBadgeFinal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Teams teams)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(teams);
             }
             var service = CreateTeamService();
 
-            if (service.TeamCreate(teams))
+            //if (service.TeamCreate(teams))
             {
-                TempData["SaveResult"] = "The team was created";
-                return RedirectToAction("Index");
+                //TempData["SaveResult"] = "The team was created";
+                //return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Note could not be created");
+            ModelState.AddModelError("", "Team could not be created");
 
             return View(teams);
         }
