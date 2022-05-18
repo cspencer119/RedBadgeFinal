@@ -20,6 +20,18 @@ Includes 20 different Stadiums, Id's are assigned by the Teams Alphabetical Orde
 
 Includes 38 different Results, ResultsId's are assigned as the order of games played during that season
 
+
+
+Some Feature that I look to be adding in the future are
+
+Additional Teams that Arsenal has played in previous season of the Premier League as well as other Competitions
+
+Additional Stadiums that Arsenal have played in 
+
+Additional Seasons worth of Results as well as the inclusion of Seasons so as to differentiate the groups of results by Season AND Competition
+
+
+
 Seed List does exist so when making changes
 you can update the contents of the Seed List in the Migrations Folder/Configuration File 
 then type into the Package Manager Console
